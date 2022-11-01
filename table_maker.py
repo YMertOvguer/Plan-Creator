@@ -22,8 +22,7 @@ press 'q' and hit enter button to quit
 
 # getting lectures
 while True:
-    event = input("Enter lecture name: ")
-    event = str(event)
+    event = str(input("Enter lecture name: "))
     if event == "q":
         break
     else:
