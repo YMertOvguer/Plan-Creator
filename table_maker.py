@@ -3,7 +3,6 @@ import numpy as np
 import random
 
 # setup
-table = np.zeros((7, 7), dtype=str)
 listed_event = []
 plan = []
 counter = 0
@@ -19,6 +18,11 @@ press 'q' and hit enter button to quit
 
 -------------------------------------------------
 """)
+# getting event number per-day
+event_num_perD = int(input("Enter lecture number per-day: "))
+
+# getting off days
+event_off_num = int(input("Enter your off days as number(in a week): "))
 
 # getting lectures
 while True:
@@ -29,14 +33,16 @@ while True:
         listed_event.append(event)
 
 # creating lecture plan
-
+total_event = (7 - event_off_num) * event_num_perD
 N = len(event)
 while True:
     a = random.randint(0, N-1)
     plan.append(event[a])
     counter += 1
-    if counter == 49:
+    if counter == total_event:
         break
 event_plan = np.array(plan)
-event_plan = event_plan.reshape(7, 7)
+event_plan = event_plan.reshape(7 - event_off_num, event_num_perD)
+
+# showing plan
 print(event_plan)
